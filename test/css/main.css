@@ -1,0 +1,478 @@
+ body
+    {
+      margin: 0;
+      padding: 0;
+      font: Arial;
+     background-size: cover;
+     background-position: center;
+    }
+    .nav
+    {
+      background-color: rgba(51, 51, 51, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      padding: 10px 90px;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0, 6);
+      border-bottom: 1px solid #fff;
+    }
+    ul.navbar-list li
+    {
+list-style-type: none;
+float: right;
+margin: 0;
+padding: 0;
+display: flex;
+    }
+    ul.navbar-list a
+    {
+     text-decoration: none;
+     line-height: 20px;
+     color: #fff;
+     padding: 12px 30px;
+     font-size: 14px;
+     font-weight: bold;
+     text-transform: uppercase;
+
+    }
+    ul.navbar-list a:hover
+    {
+      background: rgb(22, 22, 100);
+      border-radius: 4px;
+    }
+   
+p.hero-subtitle
+{
+  font-family: 'Pacifico', cursive; 
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+h1.h1_hero-title
+{
+  color: #fff;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+div.btn_wrp
+{
+  text-align: center;
+ }
+.btn
+{
+ border-radius: 40px;
+ border: 0;
+ font-size: 1.8em;
+ font-weight: 600;
+ margin: 1rem 0;
+ padding: 1rem 3rem;
+ text-transform: uppercase;
+ white-space: nowrap;
+ cursor: pointer;
+}
+.btn--primary
+{
+  background: linear-gradient(to right, #003399 0%, #006eff 100%);
+  color: white;
+}
+.btn--secondary
+{
+  background: linear-gradient(to right, #99004d 0%, #ff0080 100%);
+  color: white;
+}
+.btn--primary:hover
+{
+  background: linear-gradient(to left, #003399 0%, #006eff 100%)
+}
+.btn--secondary:hover
+{
+  background: linear-gradient(to left, #99004d 0%, #ff0080 100%);
+}
+.btn--block
+{
+  width: 20%;
+  display: inline-block;
+}
+.log
+{
+  line-height: 20px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 20px;
+ border: 0;
+ font-size: 1.4em;
+ padding: 0rem 1rem;
+} 
+.log:hover
+{
+  background: rgb(22, 22, 100);
+  border-radius: 4px;
+}
+.fly
+{
+  color: #fff;
+  font-family: "Audiowide", sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 40px;
+  border: 0;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.box .box1,
+.box .box2,
+.box .box3 {
+  flex-basis: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.box .box1:hover,
+.box .box2:hover,
+.box .box3:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.box img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.box .info {
+  padding: 20px;
+  border-radius: 5px;
+  background-color:linear-gradient(to right, #003399 0%, #006eff 100%); ;
+  box-shadow: 0px 4px 8px blue;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.box .box1:hover .info,
+.box .box2:hover .info,
+.box .box3:hover .info {
+  
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.box .info h {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.box .info p {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.box .info a {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.box .info a:hover {
+  text-decoration: underline;
+}
+.btn1
+{
+  border-radius: 20px;
+ border: 0;
+ font-size: 1em;
+ font-weight: bold;
+ padding: 0.5rem 0.5rem;
+ text-transform: uppercase;
+ white-space: nowrap;
+ cursor: pointer;
+}
+footer {
+  background-color: rgba(51, 51, 51, 0.5);
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.footer-info {
+  flex: 1;
+  text-align: left;
+  margin-right: 20px;
+}
+
+.footer-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.footer-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-nav {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav li {
+  margin-bottom: 10px;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.footer-nav a:hover {
+  color: #ccc;
+}
+
+.contact-info {
+  font-size: 16px;
+  text-align: right;
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+}
+
+.social-icons {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.social-icons a {
+  margin-left: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.log1
+{
+  line-height: 20px;
+  text-decoration: none;
+  border-radius: 10px;
+ border: 0;
+ font-size: 1.8em;
+}
+.fa-square-x-twitter:hover
+{
+  color: black;
+  background-color: #fff;
+}
+.fa-square-instagram:hover
+{
+  color: #C13584;
+  background-color: #fff;
+}
+.fa-square-facebook:hover
+{
+color: #0165E1;
+background-color: #fff;
+}
+.fa-square-whatsapp:hover
+{
+  color:  #28D146;
+  background-color: #fff;
+}
+.fa-linkedin:hover
+{
+ color: #0A66C2;
+ background-color: #fff;
+}
+.message-panel {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.custom-line {
+  width: 100%; /* Set the width of the line */
+  height: 4px; /* Set the height of the line */
+  background-color: #007bff; /* Set the background color of the line */
+  margin: 20px 0; /* Add margin above and below the line */
+  position: relative; /* Set position to relative for absolute positioning of pseudo-elements */
+  text-align: center; /* Align the line in the center */
+}
+
+.custom-line::before,
+.custom-line::after {
+  content: ''; /* Add content for pseudo-elements */
+  position: absolute; /* Set position to absolute for positioning */
+  top: 50%; /* Position at the center of the line */
+  transform: translateY(-50%); /* Adjust vertical position to center the pseudo-elements */
+  width: 20%; /* Set the width of the pseudo-elements */
+  height: 100%; /* Set the height of the pseudo-elements */
+  background-color: #ff4081; /* Set the background color of the pseudo-elements */
+  font-weight: bold; /* Make the line bold */
+}
+
+.custom-line::before {
+  left: 0; /* Position the left pseudo-element at the start of the line */
+}
+
+.custom-line::after {
+  right: 0;
+}
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(25% - 20px); /* 30% width for each card with 20px space between */
+  min-height: 250px; /* Minimum height of each card */
+  background-size: cover; /* Cover the entire card with the background image */
+  background-position: center;
+  background-color: #4c5be2;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card .info {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: linear-gradient(to right, #003399 0%, #006eff 100%);
+  box-shadow: 0px 4px 8px blue;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.card:hover .info {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.card .info h2,
+.card .info p,
+.card .info a {
+  color: #fff;
+}
+
+.card .info h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card .info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card .info a {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.card .info a:hover {
+  text-decoration: underline;
+}
+.card button {
+  padding: 10px 20px; /* Adjust padding as needed */
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none; /* Remove button border */
+  border-radius: 4px; /* Apply border radius */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-family: Arial, sans-serif; /* Specify font family */
+  font-size: 16px; /* Specify font size */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for color changes */
+}
+
+.card button:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+h5 {
+  font-size: 28px; /* Set the font size */
+  font-weight: bold; /* Set font weight to bold */
+  color: transparent; /* Make the text transparent */
+  background-image: linear-gradient(to right, #99004d 0%, #ff0080 100%); /* Set a linear gradient background */
+  -webkit-background-clip: text; /* Clip the text to the background */
+  background-clip: text; /* Clip the text to the background */
+  text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Add a light blue glow */
+  text-align: center; /* Center the text horizontally */
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  background-color: linear-gradient(to right, #99004d 0%, #ff0080 100%); /* Linear gradient background */
+  color: rgb(199, 30, 140);
+  border: none;
+  border-radius: 50%; /* Circular shape */
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: none; /* Initially hide the button */
+}
+
+
+

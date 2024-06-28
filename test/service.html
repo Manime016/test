@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+  <title>Flytrack</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+  <script src="https://kit.fontawesome.com/be738b9924.js" crossorigin="anonymous"></script>
+  <style>
+    .message-panel {
+      display: none;
+      position: absolute;
+      width: 200px; /* Adjusted size for visibility */
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      z-index: 1000;
+      font-size: 12px; /* Adjust font size to fit content */
+    }
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 2rem;
+}
+
+#services {
+    margin-bottom: 2rem;
+}
+
+.service {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#feedback {
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.7rem 1.5rem;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+#form-message {
+    margin-top: 1rem;
+}
+
+  </style>
+</head>
+<body id="top" background="./source/photoflight.jpg">
+<nav class="nav">
+  <a class="fly" href="#">Fly.com
+    <i class="fa-solid fa-plane-departure"></i>
+  </a>
+  <ul class="navbar-list">
+    <li><a href="" class="navbar-link" id="contactLink">Contact</a></li>
+    <li><a href="service.html" class="navbar-link" data-nav-link>Services</a></li>
+    <li><a href="" class="navbar-link" id="newsLink">News</a></li>
+    <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
+  </ul>
+  <div>
+    <a href="#" class="log">
+      <i class="fa-solid fa-address-card"></i>
+    </a>
+    <a href="search.html" class="log">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+    <a href="./login.html" class="log">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  </div>
+</nav>
+
+<!-- Other content -->
+
+<div id="messagePanel" class="message-panel">
+  <p>About Fly.com</p>
+  <p>Flytrack offers private jet charters that save your time and provide comfort.</p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var infoIcon = document.querySelector('.log i.fa-address-card');
+    var messagePanel = document.getElementById('messagePanel');
+
+    infoIcon.addEventListener('mouseover', function(event) {
+      var rect = infoIcon.getBoundingClientRect();
+      messagePanel.style.top = (rect.top + window.scrollY + 20) + 'px';
+      messagePanel.style.left = (rect.left + window.scrollX + 20) + 'px';
+      messagePanel.style.display = 'block';
+    });
+
+    infoIcon.addEventListener('mouseout', function(event) {
+      messagePanel.style.display = 'none';
+    });
+
+    messagePanel.addEventListener('mouseover', function() {
+      messagePanel.style.display = 'block';
+    });
+
+    messagePanel.addEventListener('mouseout', function() {
+      messagePanel.style.display = 'none';
+    });
+  });
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<header>
+    <h1>Welcome to Our Services</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service">
+            <h3>SEARCH FOR FLIGHTS</h3>
+            <p>We making it easy for you to find routs and flights for your Destinations.</p>
+        </div>
+        <div class="service">
+            <h3>EXPLORE THE WPRLD</h3>
+            <p>search for your favorate Destinations.</p>
+        </div>
+        <div class="service">
+            <h3>JOB APPORTUNITY</h3>
+            <p>Suggesting future in aviation.</p>
+        </div>
+    </section>
+
+    <section id="feedback">
+        <h2>Feedback Form</h2>
+        <form id="feedback-form" action="./phpfile/feed.php" method="POST">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <div id="form-message"></div>
+      </section>
+</main>
+<footer>
+  <div class="footer-info">
+    <a href="#" class="fly"><i class="fa-solid fa-plane-departure"></i></a>
+    <h2>Private jet charters<br>save your time and give you comfort.</h2>
+    <div class="contact-info">
+      <p><i class="fa-solid fa-phone"></i>+01 7019364686</p>
+      <p><i class="fa-solid fa-envelope"></i>fly@info.com</p>
+      <p><i class="fa-solid fa-location-dot"></i>76 , Nagarabavi, Bangalore, Karnataka</p>
+    </div>
+  </div>
+  <nav class="footer-nav">
+    <ul>
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Private Jet Catering</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Flight Search</a></li>
+      <li><a href="#">Book Flight</a></li>
+      <li><a href="#">Links</a></li>
+    </ul>
+  </nav>
+  <div class="social-icons">
+    <a href="#" class="log1"><i class="fa-brands fa-square-x-twitter"></i></a>
+    <a href="#" class="log1"><i class="fa-brands fa-square-instagram"></i></a>
+    <a href="#" class="log1"><i class="fa-brands fa-square-facebook"></i></a>
+    <a href="#" class="log1"><i class="fa-brands fa-square-whatsapp"></i></a>
+    <a href="#" class="log1"><i class="fa-brands fa-linkedin"></i></a>
+  </div>
+</footer>
+
+</body>
+</html>

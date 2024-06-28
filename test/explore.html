@@ -1,0 +1,217 @@
+<!doctype html>
+<title>
+Flytrack\explore
+</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css\main.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<script src="https://kit.fontawesome.com/be738b9924.js" crossorigin="anonymous"></script>
+<style>
+  .result {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+  }
+
+  .result:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .result img {
+      float: left;
+      margin-right: 15px;
+      width: 150px; /* Adjust image width as needed */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 5px 0 0 5px;
+  }
+
+  .result-content {
+      padding: 10px;
+  }
+
+  .result h3, .result p, .result a {
+      margin: 0;
+      padding: 0;
+  }
+
+  .result h3 {
+      margin-bottom: 5px;
+  }
+
+  .result p {
+      margin-bottom: 10px;
+  }
+
+  .result a {
+      display: block;
+      margin-top: 10px;
+  }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<meta charset="utf-8">
+<body id="top" background="./source/photoflight.jpg">
+<nav class="nav">
+      <a class="fly" href="./index.html">Fly.com
+        <i class="fa-solid fa-plane-departure"></i>
+      </a>
+         
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#home" class="navbar-link" data-nav-link>contact</a>
+          </li>
+
+          <li>
+            <a href="service.html" class="navbar-link" data-nav-link>Services</a>
+          </li>
+          <li>
+            <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+        </ul>
+        <div>
+          <a href="#" class="log">
+            <i class="fa-solid fa-address-card"></i>
+          </a>
+
+        <a href="./search.html" class="log">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+        <a href="./login.html" class="log">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        </div>
+</nav>
+<!-- Other content -->
+
+<div id="messagePanel" class="message-panel">
+  <p>About Flytrack</p>
+  <p>Flytrack offers private jet charters that save your time and provide comfort.</p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var infoIcon = document.querySelector('.log i.fa-address-card');
+    var messagePanel = document.getElementById('messagePanel');
+
+    infoIcon.addEventListener('mouseover', function(event) {
+      var rect = infoIcon.getBoundingClientRect();
+      messagePanel.style.top = (rect.top + window.scrollY + 20) + 'px';
+      messagePanel.style.left = (rect.left + window.scrollX + 20) + 'px';
+      messagePanel.style.display = 'block';
+    });
+
+    infoIcon.addEventListener('mouseout', function(event) {
+      messagePanel.style.display = 'none';
+    });
+
+    messagePanel.addEventListener('mouseover', function() {
+      messagePanel.style.display = 'block';
+    });
+
+    messagePanel.addEventListener('mouseout', function() {
+      messagePanel.style.display = 'none';
+    });
+  });
+</script>
+<br>
+<br>
+<br>
+<br>
+<h5>...... LET'S EXPLORE .........................................</h5>
+<h1>SEARCH FOR DESTINATION</h1>
+<form id="searchForm">
+    <label for="place">Place Name:</label>
+    <input type="text" id="place" name="place" required>
+    <button type="submit">Search</button>
+</form>
+<div id="results">
+    <!-- Search results will be displayed here -->
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#searchForm').submit(function(event){
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = $(this).serialize(); // Serialize form data
+
+            $.ajax({
+                type: 'POST',
+                url: './phpfile/ser.php',
+                data: formData,
+                success: function(response){
+                    $('#results').html(response); // Update the content of 'results' div with the returned HTML
+                }
+            });
+        });
+    });
+</script>
+<br>
+<br>
+<br>
+<button class="scroll-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  
+  <!-- Script to handle scrolling to top -->
+  <script>
+    // Get the button
+    var scrollToTopButton = document.querySelector('.scroll-to-top');
+  
+    // Show the button when the page is scrolled down
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 100) { // Adjust the offset value as needed
+        scrollToTopButton.style.display = 'block';
+      } else {
+        scrollToTopButton.style.display = 'none';
+      }
+    });
+  
+    // Function to scroll to top when the button is clicked
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Optional: animated scroll behavior
+      });
+    }
+  </script>
+  
+<footer>
+  <div class="footer-info">
+      <a href="#" class="fly"> <i class="fa-solid fa-plane-departure"></i></a>
+      <h2>Private jet charters<br>save your time and give you comfort.</h2>
+      <div class="contact-info">
+          <p><i class="fa-solid fa-phone"></i>+01 7019364686</p>
+          <p><i class="fa-solid fa-envelope"></i>fly@info.com</p>
+          <p><i class="fa-solid fa-location-dot"></i>376, Nagarabavi, Bangalore, Karnataka</p>
+      </div>
+  </div>
+  <nav class="footer-nav">
+      <ul>
+          <li><a href="#">Explore</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Private Jet Catering</a></li>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Flight Search</a></li>
+          <li><a href="#">Book Flight</a></li>
+          <li><a href="#">Links</a></li>
+      </ul>
+  </nav>
+  <div class="social-icons">
+      <a href="#" class="log1"><i class="fa-brands fa-square-x-twitter"></i></a>
+      <a href="#" class="log1"><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="#" class="log1"><i class="fa-brands fa-square-facebook"></i></a>
+      <a href="#" class="log1"><i class="fa-brands fa-square-whatsapp"></i></a>
+      <a href="#" class="log1"><i class="fa-brands fa-linkedin"></i></a>
+  </div>
+</footer>
+
+</body>
+</html>

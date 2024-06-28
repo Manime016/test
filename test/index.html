@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flytrack</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="..." crossorigin="anonymous" />
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('./source/photoflight.jpg');
+      background-size: cover;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Navigation styles */
+    .nav {
+      background-color: transparent; /* Transparent header background */
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav a {
+      text-decoration: none;
+      color: #fff; /* White color for links */
+      font-weight: bold;
+      margin-right: 20px;
+    }
+    
+    .nav .log {
+      margin-left: auto;
+    }
+    
+    /* Hero section styles */
+    .section_hero {
+      text-align: center;
+      padding: 100px 0;
+      color: #fff;
+    }
+    
+    .section_hero .h1_hero-title {
+      font-size: 3em;
+      margin: 20px 0;
+    }
+    
+    .section_hero .hero-subtitle {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    
+    .btn_wrp {
+      margin-top: 20px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #555;
+    }
+    
+    /* Box section styles */
+    .box {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+    }
+    
+    .box .info {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .box .info h {
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+    
+    .box .info p {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    
+    .box .info .btn1 {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .box .info .btn1:hover {
+      background-color: #555;
+    }
+    
+    /* Card section styles */
+    .card-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+    
+    .card {
+      width: 300px;
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .card h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .card p {
+      margin-bottom: 20px;
+    }
+    
+    .card button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .card button:hover {
+      background-color: #555;
+    }
+    
+    /* Footer styles */
+    footer {
+      background-color: transparent; /* Transparent footer background */
+      padding: 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    
+    .footer-info {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    
+    .footer-info h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    
+    .footer-info p {
+      margin: 5px 0;
+    }
+    
+    .contact-info p {
+      margin: 5px 0;
+    }
+    
+    .footer-nav ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+    }
+    
+    .footer-nav ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-nav ul li a {
+      text-decoration: none;
+      color: #fff; /* White color for links */
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    
+    .footer-nav ul li a:hover {
+      color: #ccc; /* Light grey color on hover */
+    }
+    
+    .social-icons {
+      margin-top: 20px;
+    }
+    
+    .social-icons a {
+      color: #fff; /* White color for icons */
+      font-size: 1.5em;
+      margin-right: 10px;
+      transition: color 0.3s;
+    }
+    
+    .social-icons a:hover {
+      color: #ccc; /* Light grey color on hover */
+    }
+    
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      z-index: 1000;
+      width: 300px;
+    }
+    
+    .popup h2 {
+      margin-top: 0;
+    }
+    
+    .popup .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+    
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a class="fly" href="#">Fly.com <i class="fas fa-plane-departure"></i></a>
+    <ul class="navbar-list">
+      <li><a href="#" class="navbar-link" id="contactLink">Contact</a></li>
+      <li><a href="service.html" class="navbar-link" data-nav-link>Services</a></li>
+      <li><a href="#" class="navbar-link" data-nav-link>Home</a></li>
+    </ul>
+    <div>
+      <a href="#" class="log"><i class="fas fa-address-card"></i></a>
+      <a href="search.html" class="log"><i class="fas fa-search"></i></a>
+      <a href="./login.html" class="log"><i class="fas fa-user"></i></a>
+    </div>
+  </nav>
+
+  <!-- Message panel -->
+  <div id="messagePanel" class="message-panel">
+    <p>About Flytrack</p>
+    <p>Flytrack offers private jet charters that save your time and provide comfort.</p>
+  </div>
+
+  <!-- Hero section -->
+  <section class="section_hero">
+    <div class="lines">
+      <p class="hero-subtitle">Save time and fly with comfort</p>
+      <h1 class="h1_hero-title">Let's find your flight</h1>
+    </div>
+    <div class="btn_wrp">
+      <a href="./search.html"><button id="searchButton" class="btn btn--primary btn--block">SEARCH NOW</button></a>
+      <a href="#" onclick="openPopup('readMorePopup');"><button id="readMoreButton" class="btn btn--secondary btn--block">READ MORE</button></a>
+    </div>
+  </section>
+
+  <!-- Boxes section -->
+  <section>
+    <div class="container">
+      <div class="box">
+        <div class="box1">
+          <img src="source/div1.jpg" alt="">
+          <div class="info">
+            <h>TERMS</h>
+            <p>Term and conditions</p>
+            <a href="#" onclick="openPopup('comingSoonPopup');"><button id="purchaseButton" class="btn1 btn1--primary">READ MORE</button></a>
+          </div>
+        </div>
+        <div class="box2">
+          <img src="source/div2.jpg" alt="">
+          <div class="info">
+            <h>Our Guide</h>
+            <p>Know more about the places you are visiting</p>
+            <a href="explore.html"><button id="exploreButton" class="btn1">Explore</button></a>
+          </div>
+        </div>
+        <div class="box3">
+          <img src="source/div3.jpg" alt="">
+          <div class="info">
+            <h>Job Offers</h>
+            <p>Get to know about a career in aviation</p>
+            <a href="https://www.naukri.com/aviation-travel-executive-airlines-travel-agency-jobs?k=aviation%2C%20travel%20executive%2C%20airlines%2C%20travel%20agency&qproductJobSource=2&naukriCampus=true&experience=0&nignbevent_src=jobsearchDeskGNB"><button id="jobButton" class="btn1">Find Now</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popups -->
+  <div id="comingSoonPopup" class="popup">
+    <span class="close" onclick="closePopup('comingSoonPopup');">&times;</span>
+    <h2>Terms and Conditions</h2>
+    <div class="terms-content">
+      <!-- Insert your terms and conditions here -->
+      <p>Welcome to Flytrack! Please read these terms and conditions carefully before using our flight route checking website.</p>
+      <p>1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>2. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+      <p>3. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
+      <p>4. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
+      <p>5. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+      <p>6. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+      <p>7. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.</p>
+      <p>8. Curabitur tortor. Pellentesque nibh. Aenean quam.</p>
+      <p>9. In scelerisque sem at dolor. Maecenas mattis.</p>
+      <p>10. Sed convallis tristique sem.</p>
+    </div>
+  </div>
+
+  <div id="readMorePopup" class="popup">
+    <span class="close" onclick="closePopup('readMorePopup');">&times;</span>
+    <h2>Read More</h2>
+    <p>Explore more about our services and how we can help you find the best flights.</p>
+    <!-- Add your read more content here -->
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closeAllPopups();"></div>
+  <div class="card-container">
+    <div class="card">
+        <h2>JOG FALLS</h2>
+        <img src="./source/jog.jpeg" alt="">
+        <p>The majestic water view.</p>
+        <button>Read more</button>
+    </div>
+    <div class="card">
+        <h2>JAIPUR</h2>
+        <img src="./source/jaipur.jpg" alt="">
+        <p>The pink city of India.</p>
+        <button>Read more</button>
+    </div>
+    <div class="card">
+        <h2>TAJ MAHAL</h2>
+        <img src="./source/tajmahal.jpg" alt="">
+        <p>The architectural beauty of India.</p>
+        <button>Read more</button>
+    </div>
+    <div class="card">
+        <h2>GOA</h2>
+        <img src="./source/goa.jpg" alt="">
+        <p>Let's go for summer goa.</p>
+        <button>Read more</button>
+    </div>
+</div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-info">
+      <h2>About Us</h2>
+      <p>We are dedicated to providing you the best travel experiences.</p>
+    </div>
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <p>Email: info@flytrack.com</p>
+      <p>Phone: +1234567890</p>
+    </div>
+    <div class="footer-nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript functions
+    function openPopup(popupId) {
+      var popup = document.getElementById(popupId);
+      popup.style.display = 'block';
+      var overlay = document.getElementById('overlay');
+      overlay.style.display = 'block';
+    }
+
+    function closePopup(popupId) {
+      var popup = document.getElementById(popupId);
+      popup.style.display = 'none';
+      var overlay = document.getElementById('overlay');
+      overlay.style.display = 'none';
+    }
+
+    function closeAllPopups() {
+      var popups = document.querySelectorAll('.popup');
+      popups.forEach(function(popup) {
+        popup.style.display = 'none';
+      });
+      var overlay = document.getElementById('overlay');
+      overlay.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

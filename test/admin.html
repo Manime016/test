@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLYTRACK/ADMIN</title>
+    <style>
+        body
+    {
+      margin: 0;
+      padding: 0;
+      font: Arial;
+     background-size: cover;
+     background-position: center;
+    }
+        .message {
+            font-size: 1.2em;
+            color: green;
+        }
+        .error {
+            font-size: 1.2em;
+            color: red;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-section label {
+            font-weight: bold;
+        }
+        .form-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .form-section li {
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="feedbackForm">
+    <h6>CHECK FOR THE FEEDBACKS BY USERS</h6>
+    <a href="feed.html"><button type="button" onclick="showFeedbacks()">FEEDBACKS</button></a>
+        </FORM>
+
+    </div>
+    
+    <BR>
+    <body id="top" background="./source/photoflight.jpg"></body>
+    <div class="form-container">
+    <h2>Insert into Search Table</h2>
+    <div id="message"></div>
+    <form action="phpfile/entry.php" method="POST">
+        <label for="sl_No">Sl No:</label><br>
+        <input type="number" id="sl_No" name="sl_No" required><br>
+        <label for="Flight_No">Flight Number:</label><br>
+        <input type="text" id="Flight_No" name="Flight_No" required><br>
+        <label for="Flight_name">Flight Name:</label><br>
+        <input type="text" id="Flight_name" name="Flight_name" required><br>
+        <label for="Departure_from">Departure From:</label><br>
+        <input type="text" id="Departure_from" name="Departure_from" required><br>
+        <label for="Destination">Destination:</label><br>
+        <input type="text" id="Destination" name="Destination" required><br>
+        <label for="Departure_time">Departure Time:</label><br>
+        <input type="time" id="Departure_time" name="Departure_time" required><br>
+        <label for="Booking_Link">Booking Link:</label><br>
+        <input type="text" id="Booking_Link" name="Booking_Link" required><br>
+        <label for="Date">Date:</label><br>
+        <input type="date" id="Date" name="Date" required><br><br>
+       <button type="submit">Submit</button>
+        </form>
+</div>
+<br>
+<div class="form-container">
+    <h4>UPDATE AND DELETE</h4>
+    <form action="./phpfile/update.php" method="post">
+        <div class="form-section">
+            <label for="update">Update:</label>
+            <ul id="update">
+                <li>
+                    <input type="checkbox" id="Flight_No" name="attributes[]" value="Flight_No">
+                    <label for="flightNumber">Flight Number</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="Flight_name" name="attributes[]" value="Flight_name">
+                    <label for="Flight_name">Flight Name</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="Departure_from" name="attributes[]" value="Departure_from">
+                    <label for="Departure_from">Departure From</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="Destination" name="attributes[]" value="Destination">
+                    <label for="Destination">Destination</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="Departure_time" name="attributes[]" value="Departure_time">
+                    <label for="Departure_time">Departure Time</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="booking_Link" name="attributes[]" value="booking_Link">
+                    <label for="booking_Link">Booking Link</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <label for="delete">Delete:</label>
+            <ul id="delete">
+                <li>
+                    <input type="checkbox" id="deleteOption" name="action" value="delete">
+                    <label for="deleteOption">Delete</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-section">
+            <label for="selectedAttributeValue">Selected Attribute Value:</label>
+            <input type="text" id="selectedAttributeValue" name="selectedAttributeValue" disabled>
+            <input type="hidden" id="selectedAttributeId" name="selectedAttributeId">
+        </div>
+
+        <div class="form-section">
+            <label for="condition">Condition (e.g., Flight Number):</label>
+            <input type="text" id="condition" name="condition">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<BR>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const selectedAttributeIdInput = document.getElementById('selectedAttributeId');
+        const selectedAttributeValueInput = document.getElementById('selectedAttributeValue');
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    if (checkbox.name === "attributes[]") {
+                        selectedAttributeIdInput.value = checkbox.value;
+                        selectedAttributeValueInput.removeAttribute("disabled");
+                        checkboxes.forEach(cb => {
+                            if (cb !== checkbox && cb.name === "attributes[]") {
+                                cb.checked = false;
+                            }
+                        });
+                    } else {
+                        selectedAttributeIdInput.value = '';
+                        selectedAttributeValueInput.setAttribute("disabled", "disabled");
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+     <div class="form-container">
+    <h2>Insert into Explore Table</h2>
+    <form action="phpfile/entry.php" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="info">Info:</label><br>
+        <input type="text" id="info" name="info" required><br>
+        <label for="link">Link:</label><br>
+        <input type="text" id="link" name="link" required><br>
+        <label for="image">Image:</label><br>
+        <input type="text" id="image" name="image" required><br>
+        <label for="slno">Sl No:</label><br>
+        <input type="number" id="slno" name="slno" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+     </div>
+     <br>
+     <div class="form-container">
+        <h4>UPDATE AND DELETE</h4>
+        <form action="./phpfile/update.php" method="post">
+            <div class="form-section">
+                <label for="update">Update:</label>
+                <ul id="update">
+                    <li>
+                        <input type="checkbox" id="name" name="attributes[]" value="name">
+                        <label for="name">NAME</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="info" name="attributes[]" value="info">
+                        <label for="info">INFO</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="link" name="attributes[]" value="link">
+                        <label for="link">LINK</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="image" name="attributes[]" value="image">
+                        <label for="image">IMAGE</label>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="form-section">
+                <label for="delete">Delete:</label>
+                <ul id="delete">
+                    <li>
+                        <input type="checkbox" id="deleteOption1" name="action" value="delete">
+                        <label for="deleteOption1">Delete</label>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="form-section">
+                <label for="selectedAttributeValue">Selected Attribute Value:</label>
+                <input type="text" id="selectedAttributeValue1" name="selectedAttributeValue1" disabled>
+                <input type="hidden" id="selectedAttributeId1" name="selectedAttributeId1">
+            </div>
+    
+            <div class="form-section">
+                <label for="condition1">Condition (e.g., name):</label>
+                <input type="text" id="condition1" name="condition1">
+            </div>
+    
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes1 = document.querySelectorAll('input[type="checkbox"]');
+            const selectedAttributeIdInput1 = document.getElementById('selectedAttributeId1');
+            const selectedAttributeValueInput1 = document.getElementById('selectedAttributeValue1');
+    
+            checkboxes1.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    if (checkbox.name === "attributes[]") {
+                        selectedAttributeIdInput1.value = checkbox.value;
+                        selectedAttributeValueInput1.removeAttribute('disabled');
+                        checkboxes1.forEach(cb => {
+                            if (cb !== checkbox && cb.name === "attributes[]") {
+                                cb.checked = false;
+                            }
+                        });
+                    } else {
+                        selectedAttributeIdInput1.value = '';
+                        selectedAttributeValueInput1.setAttribute('disabled', 'disabled');
+                    }
+                } else {
+                    selectedAttributeIdInput1.value = '';
+                    selectedAttributeValueInput1.setAttribute('disabled', 'disabled');
+                }
+            });
+        });
+    });
+</script>  
+    <script>
+        // Display the success or error message based on the query parameter
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const status = params.get('status');
+            const messageDiv = document.getElementById('message');
+            if (status === 'success') {
+                messageDiv.innerHTML = '<p class="message">Record successfully inserted!</p>';
+            } else if (status === 'error') {
+                messageDiv.innerHTML = '<p class="error">There was an error inserting the record.</p>';
+            }
+        };
+    </script>
+</body>
+</html>

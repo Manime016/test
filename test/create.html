@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* Apply basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Centering the form container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            background-image: url('./source/photoflight.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Styling the form */
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        form label {
+            margin-bottom: 5px;
+        }
+
+        form input,
+        form textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            align-self: center; /* Center the button */
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adjust anchor tag to display as block to align button */
+        a#submitButton {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+    <title>create</title>
+</head>
+<body>
+    <body id="top" background="./source/photoflight.jpg"></body>
+    <div class="form-container">
+    <h2>Create new account</h2><br>
+    <form action="phpfile/create.php" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="phone_no">Phone No:</label><br>
+        <input type="text" id="phone_no" name="phone_no"><br>
+        <label for="user_name">User Name:</label><br>
+        <input type="varchar" id="user_name" name="user_name"><br>
+        <label for="password">Password:</label><br>
+        <input type="text" id="password" name="password"><br>
+        <a href="login.html" id="submitButton"><button type="submit" >Submit</button></a>
+    </form>
+    </div>
+</body>
+</html>

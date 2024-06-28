@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <script src="https://kit.fontawesome.com/be738b9924.js" crossorigin="anonymous"></script>
+    <title>Flight Search</title>
+    <style>
+        /* Your existing CSS styles */
+        .container {
+            text-align: center;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        #flightTable {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        #flightTable th, #flightTable td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        #flightTable th {
+            background-color: #f2f2f2;
+        }
+        #flightTable tbody tr {
+            background-color: white;
+        }
+        .message-panel {
+            background-image: url(./source/ID.png);
+            background-size: cover;
+            background-position: center;
+            height: 70px;
+            width: 30px;
+            display: none;
+            position: absolute;
+            width: 200px; /* Adjusted size for visibility */
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 1000;
+            font-size: 12px; /* Adjust font size to fit content */
+        }
+    </style>
+</head>
+<body id="top" background="./source/photoflight.jpg">
+    <nav class="nav">
+        <a class="fly" href="./index.html">Fly.com
+            <i class="fa-solid fa-plane-departure"></i>
+        </a>
+        <ul class="navbar-list">
+            <li>
+                <a href="#home" class="navbar-link" data-nav-link>contact</a>
+            </li>
+            <li>
+                <a href="service.html" class="navbar-link" data-nav-link>Services</a>
+            </li>
+            <li>
+                <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+            </li>
+        </ul>
+        <div>
+            <a href="#" class="log">
+                <i class="fa-solid fa-address-card"></i>
+            </a>
+            <a href="search.html" class="log">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="./login.html" class="log">
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </div>
+    </nav>
+    <div id="messagePanel" class="message-panel"></div>
+    <br><br><br><br><br><br><br>
+    <div class="container">
+        <h2>Flight Search</h2>
+        <div class="search-container">
+            <label for="from">From:</label>
+            <input type="text" id="from" name="from">
+
+            <label for="to">To:</label>
+            <input type="text" id="to" name="to">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date">
+
+            <button type="button" onclick="searchFlights()">Search</button>
+        </div>
+        <div id="searchResults">
+            <table id="flightTable">
+                <thead>
+                    <!-- Table headers -->
+                    <tr>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Flight data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr class="custom-line">
+    <div class="card-container">
+        <div class="card">
+            <h2>JOG FALLS</h2>
+            <img src="./source/jog.jpeg" alt="">
+            <p>The majestic water view.</p>
+            <button>Read more</button>
+        </div>
+        <div class="card">
+            <h2>JAIPUR</h2>
+            <img src="./source/jaipur.jpg" alt="">
+            <p>The pink city of India.</p>
+            <button>Read more</button>
+        </div>
+        <div class="card">
+            <h2>TAJ MAHAL</h2>
+            <img src="./source/tajmahal.jpg" alt="">
+            <p>The architectural beauty of India.</p>
+            <button>Read more</button>
+        </div>
+        <div class="card">
+            <h2>GOA</h2>
+            <img src="./source/goa.jpg" alt="">
+            <p>Let's go for summer goa.</p>
+            <button>Read more</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-info">
+            <a href="#" class="fly"> <i class="fa-solid fa-plane-departure"></i></a>
+            <h2>Private jet charters<br>save your time and give you comfort.</h2>
+            <div class="contact-info">
+                <p><i class="fa-solid fa-phone"></i>+01 7019364686</p>
+                <p><i class="fa-solid fa-envelope"></i>fly@info.com</p>
+                <p><i class="fa-solid fa-location-dot"></i>76 nagarabavi, Bangalore, Karnataka</p>
+            </div>
+        </div>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Private Jet Catering</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Flight Search</a></li>
+                <li><a href="#">Book Flight</a></li>
+                <li><a href="#">Links</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="#" class="log1"><i class="fa-brands fa-square-x-twitter"></i></a>
+            <a href="#" class="log1"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="#" class="log1"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="#" class="log1"><i class="fa-brands fa-square-whatsapp"></i></a>
+            <a href="#" class="log1"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('.card button').forEach(button => {
+            button.addEventListener('click', () => {
+                window.location.href = 'explore.html';
+            });
+        });
+
+        function searchFlights() {
+            var from = document.getElementById("from").value;
+            var to = document.getElementById("to").value;
+            var date = document.getElementById("date").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "phpfile/ser.php", true); // Adjust path to your PHP file
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("flightTable").style.display = "table"; // Show the table
+                    document.getElementById("flightTable").getElementsByTagName('tbody')[0].innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send("from=" + from + "&to=" + to + "&date=" + date);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var infoIcon = document.querySelector('.log i.fa-address-card');
+            var messagePanel = document.getElementById('messagePanel');
+
+            infoIcon.addEventListener('mouseover', function(event) {
+                var rect = infoIcon.getBoundingClientRect();
+                messagePanel.style.top = (rect.top + window.scrollY + 20) + 'px';
+                messagePanel.style.left = (rect.left + window.scrollX + 20) + 'px';
+                messagePanel.style.display = 'block';
+            });
+
+            infoIcon.addEventListener('mouseout', function(event) {
+                messagePanel.style.display = 'none';
+            });
+
+            messagePanel.addEventListener('mouseover', function() {
+                messagePanel.style.display = 'block';
+            });
+
+            messagePanel.addEventListener('mouseout', function() {
+                messagePanel.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

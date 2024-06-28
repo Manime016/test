@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Feedback</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: block; /* Change display to block for full-width button */
+      margin: 1rem auto;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .feedback-container {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+    }
+    .feedback {
+      margin-bottom: 1rem;
+    }
+    .feedback h3 {
+      margin: 0;
+    }
+    .feedback p {
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Feedback</h1>
+  <button id="show-feedback-btn">Show Feedbacks</button>
+  <div id="feedback-container" class="feedback-container">
+    <!-- Feedbacks will be inserted here dynamically -->
+  </div>
+  <script>
+    // JavaScript code to fetch and display feedbacks
+    document.getElementById("show-feedback-btn").addEventListener("click", () => {
+      const feedbackContainer = document.getElementById("feedback-container");
+
+      // Fetch feedbacks from the PHP script
+      fetch("./phpfile/feedback.php")
+        .then(response => response.json())
+        .then(feedbacks => {
+          feedbackContainer.innerHTML = ""; // Clear previous content
+          if (feedbacks.length === 0) {
+            feedbackContainer.innerText = "No feedback available.";
+          } else {
+            // Iterate through feedbacks and create HTML elements to display them
+            feedbacks.forEach(feedback => {
+              const feedbackElement = document.createElement("div");
+              feedbackElement.classList.add("feedback");
+
+              const nameElement = document.createElement("h3");
+              nameElement.innerText = feedback.name;
+
+              const emailElement = document.createElement("p");
+              emailElement.innerText = `Email: ${feedback.email}`;
+
+              const commentElement = document.createElement("p");
+              commentElement.innerText = feedback.message;
+
+              feedbackElement.appendChild(nameElement);
+              feedbackElement.appendChild(emailElement);
+              feedbackElement.appendChild(commentElement);
+
+              feedbackContainer.appendChild(feedbackElement);
+            });
+          }
+          // Show the feedback container
+          feedbackContainer.style.display = "block";
+        })
+        .catch(error => {
+          console.error(error); // Log any errors to the console
+          feedbackContainer.innerText = "Error fetching feedback.";
+          feedbackContainer.style.display = "block";
+        });
+    });
+  </script>
+</body>
+</html>
